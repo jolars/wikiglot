@@ -5,6 +5,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent / "exts"))
 
 from github_link import make_linkcode_resolve  # noqa: E402
+
 from wikiglot import __version__  # noqa: E402
 
 # Project information
@@ -43,7 +44,7 @@ autosummary_imported_members = True
 # Options for HTML output
 html_theme = "furo"
 html_static_path = ["_static"]
-#html_logo = "_static/logo.svg"
+# html_logo = "_static/logo.svg"
 
 # Intersphinx
 # intersphinx_mapping = {

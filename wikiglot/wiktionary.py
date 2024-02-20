@@ -8,7 +8,24 @@ from .utils import _get_soup
 
 
 class Wiktionary:
-    def __init__(self, locale: str):
+    """
+    A class for interacting with Wiktionary to retrieve linguistic information.
+
+    Parameters
+    ----------
+    locale:
+        The locale to be used for language-specific operations.
+    """
+
+    def __init__(self, locale: str = "en"):
+        """
+        Initialize the Wiktionary class with the specified locale.
+
+        Parameters
+        ----------
+        locale:
+            The locale to be used for language-specific operations.
+        """
         self.locale = self._localize(locale)
 
     @staticmethod
@@ -200,6 +217,29 @@ class Wiktionary:
         return glossary_entry
 
     def lemmatize(self, word: str, language_from: str | None = None) -> set[str]:
+        """
+        Lemmatize a given word in a specified language or in the default language
+        if none is specified.
+
+        Parameters
+        ----------
+        word :
+            The word to be lemmatized.
+        language_from :
+            The language in which the word is to be lemmatized.
+            If not provided, the language of the Wiktionary will be used.
+
+        Returns
+        -------
+        set[str]
+            A set of lemmas for the given word.
+
+        Raises
+        ------
+        ValueError
+            If the specified language is not in the language map.
+
+        """
         if language_from is None:
             language_from = self.locale.language
 
@@ -219,6 +259,29 @@ class Wiktionary:
         return self._parse_soup_for_lemmas(soup, word, language_id)
 
     def lookup(self, word: str, language_from: str | None = None) -> Dict | None:
+        """
+        Look up a word.
+
+        Parameters
+        ----------
+        word:
+            The word to look up.
+        language_from:
+            The language in which to look up the word. If not specified,
+            the language of the Wiktionary is used.
+
+        Returns
+        -------
+        dict or None
+            A dictionary containing the word's information if the word is found,
+            `None` otherwise.
+
+        Raises
+        ------
+        ValueError
+            If the specified language is not in the language map.
+
+        """
         if language_from is None:
             language_from = self.locale.language
 
