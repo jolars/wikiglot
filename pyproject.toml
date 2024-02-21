@@ -10,7 +10,7 @@ readme = "README.md"
 maintainers = [{ name = "Johan Larsson", email = "johanlarsson@outlook.com" }]
 authors = [{ name = "Johan Larsson", email = "johanlarsson@outlook.com" }]
 license = { file = "LICENSE" }
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dependencies = ["bs4", "requests"]
 classifiers = [
   "Development Status :: 3 - Alpha",
