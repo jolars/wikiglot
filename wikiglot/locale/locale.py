@@ -1,6 +1,5 @@
 import re
 from abc import ABC, abstractmethod
-from typing import Dict
 
 from bs4 import Tag
 
@@ -9,7 +8,7 @@ class _Locale(ABC):
     def __init__(
         self,
         language: str,
-        language_map: Dict[str, str],
+        language_map: dict[str, str],
         class_list: list[str],
         inflection_pattern: str,
         synonym_pattern: str | None,
