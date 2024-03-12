@@ -3,13 +3,20 @@ from bs4 import BeautifulSoup
 
 
 def _get_soup(word: str, url: str) -> BeautifulSoup | None:
+    from . import __version__
+
     params = {
         "action": "parse",
         "page": word.replace(" ", "_"),
         "format": "json",
         "prop": "text",
     }
-    response = requests.get(url, params=params)
+
+    headers = {
+        "User-Agent": f"Wikiglot/{__version__} (https://github.com/jolars/wikiglot/)"
+    }
+
+    response = requests.get(url, params=params, headers=headers)
 
     if response.status_code != 200:
         msg = f"API error for word: {word}"
