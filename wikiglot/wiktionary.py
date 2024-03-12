@@ -1,5 +1,4 @@
 import re
-from typing import Dict
 
 from bs4 import BeautifulSoup, Tag
 
@@ -154,7 +153,7 @@ class Wiktionary:
 
     def _parse_soup(
         self, soup: BeautifulSoup, word: str, language_from: str
-    ) -> Dict | None:
+    ) -> dict | None:
         language_id = self.locale.language_map[language_from]
         language_tag = soup.find(id=language_id)
 
@@ -258,7 +257,7 @@ class Wiktionary:
 
         return self._parse_soup_for_lemmas(soup, word, language_id)
 
-    def lookup(self, word: str, language_from: str | None = None) -> Dict | None:
+    def lookup(self, word: str, language_from: str | None = None) -> dict | None:
         """
         Look up a word.
 
