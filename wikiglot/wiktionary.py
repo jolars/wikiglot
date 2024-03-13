@@ -228,11 +228,13 @@ class Wiktionary:
 
         Parameters
         ----------
-        word :
+        word
             The word to be lemmatized.
-        language_from :
+
+        language_from
             The language in which the word is to be lemmatized.
             If not provided, the language of the Wiktionary will be used.
+
         session
             A `requests.Session` object to be used for the request. If not provided,
             a new session will be created.
@@ -277,11 +279,13 @@ class Wiktionary:
 
         Parameters
         ----------
-        word:
+        word
             The word to look up.
-        language_from:
+
+        language_from
             The language in which to look up the word. If not specified,
             the language of the Wiktionary is used.
+
         session
             A `requests.Session` object to be used for the request. If not provided,
             a new session will be created each time the function is used.
