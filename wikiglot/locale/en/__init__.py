@@ -134,30 +134,27 @@ class _En(_Locale):
                 match = re.search(thesaurus_pattern, synonyms[i])
                 if match:
                     synonyms[i] = match.group(1).strip()
-                else:
-                    synonyms[i] = synonyms[i]
 
         return synonyms
 
-    def extract_antonyms(self, dl):
+    def extract_antonyms(self, dl) -> list[str]:
+        antonyms = []
         item = dl.find("span", {"class": "antonym"})
 
         if item is not None:
-            pattern = r"Antonym(?:s)?\: ([^;]+)"
+            pattern = re.compile(r"Antonym(?:s)?\: ([^;]+)")
             antonyms_string = re.findall(pattern, item.get_text())[0]
-            antonyms_split = antonyms_string.split(", ")
+            antonyms = antonyms_string.split(", ")
 
             # see Thesaurus: word -> word
             thesaurus_pattern = re.compile(r"see Thesaurus:(.*)")
 
-            for i in range(len(antonyms_split)):
-                match = re.search(thesaurus_pattern, antonyms_split[i])
+            for i in range(len(antonyms)):
+                match = re.search(thesaurus_pattern, antonyms[i])
                 if match:
-                    antonyms_split[i] = match.group(1).strip()
+                    antonyms[i] = match.group(1).strip()
 
-            return antonyms_split
-
-        return []
+        return antonyms
 
     def extract_usage(self, dl: Tag) -> list[str]:
         items = dl.find_all("i", {"class": "e-example"})
