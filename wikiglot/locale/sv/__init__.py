@@ -70,11 +70,7 @@ class _Sv(_Locale):
         if item is not None:
             pattern = r"Synonym(?:er)?\: ([^;]+)"
             synonyms_string = re.findall(pattern, item.get_text())[0]
-            res = synonyms_string.split(", ")
-            if isinstance(res, list):
-                synonyms = res
-            elif isinstance(res, str):
-                synonyms = [res]
+            synonyms = synonyms_string.split(", ")
 
         return synonyms
 
@@ -86,8 +82,7 @@ class _Sv(_Locale):
         if item is not None:
             pattern = r"Antonym(?:er)?\: ([^;]+)"
             antonyms_string = re.findall(pattern, item.get_text())[0]
-            res = antonyms_string.split(", ")
-            antonyms.append(res)
+            antonyms = antonyms_string.split(", ")
 
         return antonyms
 
