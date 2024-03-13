@@ -1,5 +1,6 @@
 import re
 
+import requests
 from bs4 import BeautifulSoup, Tag
 
 from .locale import _Da, _En, _Sv
@@ -215,7 +216,12 @@ class Wiktionary:
 
         return glossary_entry
 
-    def lemmatize(self, word: str, language_from: str | None = None) -> set[str]:
+    def lemmatize(
+        self,
+        word: str,
+        language_from: str | None = None,
+        session: requests.Session | None = None,
+    ) -> set[str]:
         """
         Lemmatize a given word in a specified language or in the default language
         if none is specified.
@@ -227,6 +233,9 @@ class Wiktionary:
         language_from :
             The language in which the word is to be lemmatized.
             If not provided, the language of the Wiktionary will be used.
+        session
+            A `requests.Session` object to be used for the request. If not provided,
+            a new session will be created.
 
         Returns
         -------
@@ -249,7 +258,7 @@ class Wiktionary:
         language_id = self.locale.language_map[language_from]
 
         soup = _get_soup(
-            word, f"https://{self.locale.language}.wiktionary.org/w/api.php"
+            word, f"https://{self.locale.language}.wiktionary.org/w/api.php", session
         )
 
         if soup is None:
@@ -257,7 +266,12 @@ class Wiktionary:
 
         return self._parse_soup_for_lemmas(soup, word, language_id)
 
-    def lookup(self, word: str, language_from: str | None = None) -> dict | None:
+    def lookup(
+        self,
+        word: str,
+        language_from: str | None = None,
+        session: requests.Session | None = None,
+    ) -> dict | None:
         """
         Look up a word.
 
@@ -268,6 +282,9 @@ class Wiktionary:
         language_from:
             The language in which to look up the word. If not specified,
             the language of the Wiktionary is used.
+        session
+            A `requests.Session` object to be used for the request. If not provided,
+            a new session will be created each time the function is used.
 
         Returns
         -------
@@ -289,7 +306,7 @@ class Wiktionary:
             raise ValueError(msg)
 
         soup = _get_soup(
-            word, f"https://{self.locale.language}.wiktionary.org/w/api.php"
+            word, f"https://{self.locale.language}.wiktionary.org/w/api.php", session
         )
 
         if soup is None:

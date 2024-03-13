@@ -2,8 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def _get_soup(word: str, url: str) -> BeautifulSoup | None:
+def _get_soup(
+    word: str, url: str, session: requests.Session | None = None
+) -> BeautifulSoup | None:
     from . import __version__
+
+    if session is None:
+        session = requests.Session()
 
     params = {
         "action": "parse",
@@ -16,7 +21,7 @@ def _get_soup(word: str, url: str) -> BeautifulSoup | None:
         "User-Agent": f"Wikiglot/{__version__} (https://github.com/jolars/wikiglot/)"
     }
 
-    response = requests.get(url, params=params, headers=headers)
+    response = session.get(url, params=params, headers=headers)
 
     if response.status_code != 200:
         msg = f"API error for word: {word}"
