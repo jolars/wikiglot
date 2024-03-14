@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/jolars/wikiglot/compare/v0.1.0...v0.2.0) (2024-03-13)
+
+
+### Features
+
+* send user agent headers with wikmedia api request ([a2e10fd](https://github.com/jolars/wikiglot/commit/a2e10fd83a8e239fd7b2780728f61b209aa0547a))
+* use session objects in Glossary.lemmatize() and Glossary.lookup() ([e72ee19](https://github.com/jolars/wikiglot/commit/e72ee193d2359560dfdaff5ab7113fc6fcdd2f68))
+
+
+### Bug Fixes
+
+* **sv:** fix antonyms and synonyms values ([4eb4ec4](https://github.com/jolars/wikiglot/commit/4eb4ec41a086834f0c8ff26fa21f1bfd0400b391))
+
 ## 0.1.0 (2024-02-21)
 
 
