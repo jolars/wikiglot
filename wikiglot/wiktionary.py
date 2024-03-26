@@ -83,6 +83,10 @@ class Wiktionary:
         entry_items = ol_tag.find_all("li", recursive=False)
 
         for item in entry_items:
+            item_class = item.attrs.get("class")
+            if item_class and "mw-empty-elt" in item_class:
+                continue
+
             sub_ol_tag = item.find("ol", recursive=False)
             if sub_ol_tag:
                 # If there is a nested entry, we collapse it into the current entry
