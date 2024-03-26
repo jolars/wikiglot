@@ -1,4 +1,5 @@
 """Tests for wikiglot."""
+
 import importlib.resources as resources
 
 from bs4 import BeautifulSoup
@@ -77,7 +78,6 @@ def test_full_parse():
                         "antonyms": [],
                         "usage": [],
                     },
-                    {"definition": "", "synonyms": [], "antonyms": [], "usage": []},
                     {
                         "definition": " A click or pallet adapted to engage the teeth of a ratchet wheel, to restrain the back action.",
                         "synonyms": ["click", "pallet", "pawl", "ratchet"],
