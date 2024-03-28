@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/jolars/wikiglot/compare/v0.2.0...v0.2.1) (2024-03-26)
+
+
+### Bug Fixes
+
+* skip empty li tags when parsing definitions ([345c406](https://github.com/jolars/wikiglot/commit/345c4069a2b40e4075f9c50e7a7030805f81f135))
+
 ## [0.2.0](https://github.com/jolars/wikiglot/compare/v0.1.0...v0.2.0) (2024-03-13)
 
 
