@@ -1,4 +1,5 @@
 import re
+from collections import defaultdict
 
 import requests
 from bs4 import BeautifulSoup, Tag
@@ -216,7 +217,23 @@ class Wiktionary:
 
                                 parts.append(part)
 
-        glossary_entry["parts"] = parts
+        # merge duplicate parts
+        # TODO: Refactor this
+        d = defaultdict(list)
+
+        for part in parts:
+            d[part["class"]].append(part)
+
+        merged_parts = []
+
+        for class_, items in d.items():
+            merged_item = {"class": class_, "entries": [], "synonyms": []}
+            for item in items:
+                merged_item["entries"].extend(item["entries"])
+                merged_item["synonyms"].extend(item["synonyms"])
+            merged_parts.append(merged_item)
+
+        glossary_entry["parts"] = merged_parts
 
         return glossary_entry
 
