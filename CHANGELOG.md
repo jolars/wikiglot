@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/jolars/wikiglot/compare/v0.2.1...v0.2.2) (2024-04-03)
+
+
+### Bug Fixes
+
+* merge duplicate parts ([9ae1aa8](https://github.com/jolars/wikiglot/commit/9ae1aa86846f8af54389071326595b50ee740ce2))
+
 ## [0.2.1](https://github.com/jolars/wikiglot/compare/v0.2.0...v0.2.1) (2024-03-26)
 
 
