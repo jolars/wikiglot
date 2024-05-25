@@ -9,10 +9,10 @@
 
 ## Installing
 
-**wikiglot** can be installed from source via pip:
+**wikiglot** can be installed from pypa using pip:
 
 ```sh
-pip install git+https://github.com/jolars/wikiglot
+pip install wikiglot
 ```
 
 ## Usage
