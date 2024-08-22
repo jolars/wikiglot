@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "wikiglot"
-version = "0.2.1"
+version = "0.2.2"
 description = "Yet another wiktionary parser"
 readme = "README.md"
 maintainers = [{ name = "Johan Larsson", email = "johanlarsson@outlook.com" }]
